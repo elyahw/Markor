@@ -68,67 +68,67 @@ public class MoreInfoFragment extends GsPreferenceFragmentBase<AppSettings> {
                     _cu.animateToActivity(activity, SettingsActivity.class, false, 124);
                     return true;
                 }
-                case R.string.pref_key__more_info__rate_app: {
-                    _cu.showGooglePlayEntryForThisApp(getContext());
-                    return true;
-                }
+//                case R.string.pref_key__more_info__rate_app: {
+//                    _cu.showGooglePlayEntryForThisApp(getContext());
+//                    return true;
+//                }
 
-                case R.string.pref_key__more_info__join_community: {
-                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_community_url));
-                    return true;
-                }
+//                case R.string.pref_key__more_info__join_community: {
+//                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_community_url));
+//                    return true;
+//                }
                 case R.string.pref_key__more_info__help: {
                     _cu.openWebpageInExternalBrowser(getContext(),
                             String.format("https://github.com/gsantner/%s#readme", getString(R.string.app_name_real).toLowerCase()));
                     return true;
                 }
-                case R.string.pref_key__more_info__bug_reports: {
-                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_bugreport_url));
-                    return true;
-                }
-                case R.string.pref_key__more_info__translate: {
-                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_translate_url));
-                    return true;
-                }
-                case R.string.pref_key__more_info__source_code: {
-                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_source_code_url));
-                    return true;
-                }
-                case R.string.pref_key__more_info__project_license: {
-                    _cu.showDialogWithRawFileInWebView(getActivity(), "license.txt", R.string.project_license);
-                    return true;
-                }
-                case R.string.pref_key__more_info__open_source_licenses: {
-                    try {
-                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.licenses, new GsSimpleMarkdownParser().parse(
-                                getResources().openRawResource(R.raw.licenses_3rd_party),
-                                "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    return true;
-                }
-                case R.string.pref_key__more_info__contributors_public_info: {
-                    try {
-                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.contributors, new GsSimpleMarkdownParser().parse(
-                                getResources().openRawResource(R.raw.contributors),
-                                "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    return true;
-                }
-                case R.string.pref_key__more_info__copy_build_information: {
-                    _cu.setClipboard(getContext(), preference.getSummary());
-                    GsSimpleMarkdownParser smp = new GsSimpleMarkdownParser();
-                    try {
-                        String html = smp.parse(getResources().openRawResource(R.raw.changelog), "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml();
-                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.changelog, html);
-                    } catch (Exception ex) {
-
-                    }
-                    return true;
-                }
+//                case R.string.pref_key__more_info__bug_reports: {
+//                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_bugreport_url));
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__translate: {
+//                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_translate_url));
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__source_code: {
+//                    _cu.openWebpageInExternalBrowser(getContext(), getString(R.string.app_source_code_url));
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__project_license: {
+//                    _cu.showDialogWithRawFileInWebView(getActivity(), "license.txt", R.string.project_license);
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__open_source_licenses: {
+//                    try {
+//                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.licenses, new GsSimpleMarkdownParser().parse(
+//                                getResources().openRawResource(R.raw.licenses_3rd_party),
+//                                "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__contributors_public_info: {
+//                    try {
+//                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.contributors, new GsSimpleMarkdownParser().parse(
+//                                getResources().openRawResource(R.raw.contributors),
+//                                "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    return true;
+//                }
+//                case R.string.pref_key__more_info__copy_build_information: {
+//                    _cu.setClipboard(getContext(), preference.getSummary());
+//                    GsSimpleMarkdownParser smp = new GsSimpleMarkdownParser();
+//                    try {
+//                        String html = smp.parse(getResources().openRawResource(R.raw.changelog), "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW).getHtml();
+//                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.changelog, html);
+//                    } catch (Exception ex) {
+//
+//                    }
+//                    return true;
+//                }
             }
         }
         return null;
@@ -171,26 +171,26 @@ public class MoreInfoFragment extends GsPreferenceFragmentBase<AppSettings> {
 
         // Extract project team from raw ressource, where 1 person = 4 lines
         // 1) Name/Title, 2) Description/Summary, 3) Link/View-Intent, 4) Empty line
-        if ((pref = findPreference(R.string.pref_key__more_info__project_team)) != null && ((PreferenceGroup) pref).getPreferenceCount() == 0) {
-            String[] data = (_cu.readTextfileFromRawRes(context, R.raw.project_team, "", "").trim() + "\n\n").split("\n");
-            for (int i = 0; i + 2 < data.length; i += 4) {
-                Preference person = new Preference(context);
-                person.setTitle(data[i]);
-                person.setSummary(data[i + 1]);
-                person.setIcon(R.drawable.ic_person_black_24dp);
-                try {
-                    Uri uri = Uri.parse(data[i + 2]);
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    person.setIntent(intent);
-                } catch (Exception ignored) {
-                }
-                appendPreference(person, (PreferenceGroup) pref);
-            }
-        }
-
-        if ((pref = findPreference(R.string.pref_key__more_info__help)) != null) {
-            pref.setTitle(getString(R.string.help) + " / FAQ");
-        }
+//        if ((pref = findPreference(R.string.pref_key__more_info__project_team)) != null && ((PreferenceGroup) pref).getPreferenceCount() == 0) {
+//            String[] data = (_cu.readTextfileFromRawRes(context, R.raw.project_team, "", "").trim() + "\n\n").split("\n");
+//            for (int i = 0; i + 2 < data.length; i += 4) {
+//                Preference person = new Preference(context);
+//                person.setTitle(data[i]);
+//                person.setSummary(data[i + 1]);
+//                person.setIcon(R.drawable.ic_person_black_24dp);
+//                try {
+//                    Uri uri = Uri.parse(data[i + 2]);
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    person.setIntent(intent);
+//                } catch (Exception ignored) {
+//                }
+//                appendPreference(person, (PreferenceGroup) pref);
+//            }
+//        }
+//
+//        if ((pref = findPreference(R.string.pref_key__more_info__help)) != null) {
+//            pref.setTitle(getString(R.string.help) + " / FAQ");
+//        }
     }
 }
